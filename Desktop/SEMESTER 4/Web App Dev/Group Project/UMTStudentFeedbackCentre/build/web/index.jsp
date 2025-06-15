@@ -81,29 +81,48 @@
                                 <p><%= thread.getReplyCount()%> replies</p>
                             </div>
                         </div>
-                        <% } %>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section-padding">
-                <div class="container">
-                    <h2 class="mb-4">Top Feedbacks</h2>
-                    <div class="row">
-                        <%
-                            for (Feedback fb : feedbackList) {
-                        %>
-                        <div class="col-md-6 mb-4">
-                            <div class="card p-4 shadow rounded-4">
-                                <h4><%= fb.getTitle()%></h4>
-                                <p><%= fb.getContent()%></p>
-                                <span class="badge bg-info">Submitted by <%= fb.getAuthorName()%></span>
-                            </div>
-                        </div>
                         <% }%>
                     </div>
                 </div>
             </section>
+
+            <section class="section-padding bg-light">
+                <div class="container">
+                    <h2 class="mb-4">Top Feedbacks</h2>
+
+                    <% if (feedbackList != null && !feedbackList.isEmpty()) { %>
+                    <div class="row g-4">
+                        <% for (Feedback fb : feedbackList) {%>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card h-100 shadow-sm border-0 rounded-4">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title text-primary"><%= fb.getTitle()%></h5>
+                                    <p class="card-text text-muted mb-1 small">
+                                        <i class="bi bi-person-circle me-1"></i>
+                                        <%= fb.getAuthorName()%>
+                                    </p>
+                                    <p class="card-text"><%= fb.getContent()%></p>
+
+                                    <div class="mt-auto d-flex justify-content-between align-items-center">
+                                        <span class="badge bg-info text-dark">
+                                            <i class="bi bi-hand-thumbs-up-fill me-1"></i>
+                                            <%= fb.getUpvotes()%> Upvotes
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
+                    <% } else { %>
+                    <div class="alert alert-info text-center">
+                        No feedbacks available right now.
+                    </div>
+                    <% }%>
+                </div>
+            </section>
+
+
         </main>
 
         <%@ include file="include/footer.jsp" %>
