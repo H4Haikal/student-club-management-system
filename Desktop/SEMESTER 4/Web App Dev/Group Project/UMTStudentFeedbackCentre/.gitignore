@@ -1,0 +1,26 @@
+# ============ NetBeans-specific =============
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/.*/           # Hidden files like .DS_Store, .classpath, .project, etc
+*.bak
+*.log
+*.class
+
+# ============ Java/Servlet-specific =========
+*.war
+*.ear
+*.iml
+*.swp
+*.tmp
+*.out
+
+# ============ OS/Editor Junk Files ==========
+*.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+.idea/
+.vscode/
+node_modules/

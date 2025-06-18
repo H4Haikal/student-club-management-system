@@ -15,7 +15,7 @@
     <%@ include file="include/head.jsp" %>
     <body id="top">
         <main>
-            <% request.setAttribute("currentPage", "forumDash");%>
+            <% request.setAttribute("currentPage", "forum");%>
             <%@ include file="include/navigation.jsp" %>
 
             <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">

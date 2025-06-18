@@ -39,7 +39,7 @@ public class ThreadDAO {
                 Thread t = new Thread();
                 t.setThreadID(rs.getString("threadID"));
                 t.setTitle(rs.getString("title"));
-                t.setAuthorName(rs.getString("name"));
+                t.setAuthorName(rs.getString("authorName"));
                 t.setReplyCount(rs.getInt("reply_count"));
                 list.add(t);
             }

@@ -316,10 +316,10 @@
                                 <div class="card mt-3">
                                     <div class="row">
                                         <div class="col-sm-12 align-items-center text-center">
-                                            <a href="feedback?action=list.jsp" class="btn btn-primary m-3 btn-outline btn-lg">
+                                            <a href="feedback?action=new" class="btn btn-primary m-3 btn-outline btn-lg">
                                                 <i class="fas fa-comment-dots"></i> Submit Feedback
                                             </a>
-                                            <a href="creatThread.jsp" class="btn btn-success m-3 btn-outline btn-lg">
+                                            <a href="createThread.jsp" class="btn btn-success m-3 btn-outline btn-lg">
                                                 <i class="fas fa-pen-nib"></i> Create Thread
                                             </a>
                                         </div>
@@ -363,7 +363,7 @@
                     <div class="col-md-8">
 
                         <form action="updateProfile.jsp" method="post" id="profileForm">
-                            <div class="card mb-3 mt-4 p-3">
+                            <div class="card mb-3 p-3">
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <h6 class="mb-0">Full Name</h6>
@@ -468,7 +468,7 @@
                                                 </div>
                                                 <p><b>${totalFeedback}</b> feedback(s)</p>
 
-                                                <small>Most Upvoted Feedback</small>
+                                                <small>Most Recent Feedback</small>
                                                 <div class="progress mb-3" style="height: 5px">
                                                     <div class="progress-bar bg-primary" role="progressbar" style="width:100%"></div>
                                                 </div>

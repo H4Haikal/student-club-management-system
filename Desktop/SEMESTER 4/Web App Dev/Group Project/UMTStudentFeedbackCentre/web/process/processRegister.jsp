@@ -10,11 +10,11 @@
     String name = request.getParameter("name");
     String email = request.getParameter("email");
     String password = request.getParameter("password");
-    
+
     if ("admin".equals(role) && (adminKey == null || !adminKey.equals(expectedAdminKey))) {
-    response.sendRedirect("../register.jsp?error=invalid_adminkey");
-    return;
-}
+        response.sendRedirect("../register.jsp?error=invalid_adminkey");
+        return;
+    }
 
     try (Connection con = DBConnection.getConnection()) {
         String sql = "INSERT INTO user (role, userId, name, email, password) VALUES (?, ?, ?, ?, ?)";
@@ -29,17 +29,32 @@
 
         if (result > 0) {
             if ("admin".equals(role)) {
-                PreparedStatement ps2 = con.prepareStatement("INSERT INTO admin (adminID) VALUES (?)");
-                ps2.setString(1, id);
-                ps2.executeUpdate();
+                PreparedStatement check = con.prepareStatement("SELECT adminID FROM admin WHERE adminID = ?");
+                check.setString(1, id);
+                ResultSet rs = check.executeQuery();
+                if (!rs.next()) {
+                    PreparedStatement ps2 = con.prepareStatement("INSERT INTO admin (adminID) VALUES (?)");
+                    ps2.setString(1, id);
+                    ps2.executeUpdate();
+                }
             } else if ("staff".equals(role)) {
-                PreparedStatement ps2 = con.prepareStatement("INSERT INTO staff (staffID) VALUES (?)");
-                ps2.setString(1, id);
-                ps2.executeUpdate();
+                PreparedStatement check = con.prepareStatement("SELECT staffID FROM staff WHERE staffID = ?");
+                check.setString(1, id);
+                ResultSet rs = check.executeQuery();
+                if (!rs.next()) {
+                    PreparedStatement ps2 = con.prepareStatement("INSERT INTO staff (staffID) VALUES (?)");
+                    ps2.setString(1, id);
+                    ps2.executeUpdate();
+                }
             } else if ("student".equals(role)) {
-                PreparedStatement ps2 = con.prepareStatement("INSERT INTO student (studentID) VALUES (?)");
-                ps2.setString(1, id);
-                ps2.executeUpdate();
+                PreparedStatement check = con.prepareStatement("SELECT studentID FROM student WHERE studentID = ?");
+                check.setString(1, id);
+                ResultSet rs = check.executeQuery();
+                if (!rs.next()) {
+                    PreparedStatement ps2 = con.prepareStatement("INSERT INTO student (studentID) VALUES (?)");
+                    ps2.setString(1, id);
+                    ps2.executeUpdate();
+                }
             }
 
             response.sendRedirect("../login.jsp?message=success");

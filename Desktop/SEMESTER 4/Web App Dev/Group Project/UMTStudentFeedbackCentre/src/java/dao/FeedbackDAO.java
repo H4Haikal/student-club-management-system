@@ -147,16 +147,9 @@ public class FeedbackDAO {
     // ✅ Get top 5 feedbacks
     public List<Feedback> getTopFeedbacks() {
         List<Feedback> list = new ArrayList<>();
-        String sql = """
-        SELECT f.feedbackID, f.title, f.content, u.name AS authorName, COUNT(u2.upvoteID) AS upvotes
-        FROM feedback f
-        JOIN user u ON f.userID = u.userID
-        LEFT JOIN feedbackupvote u2 ON f.feedbackID = u2.feedbackID
-        GROUP BY f.feedbackID
-        ORDER BY upvotes DESC
-        LIMIT 5
-        """;
-
+        String sql = "SELECT f.feedbackID, f.title, f.content, u.name "
+                + "FROM feedback f JOIN user u ON f.userID = u.userID "
+                + "ORDER BY f.createdAt DESC LIMIT 5";
         try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -164,8 +157,7 @@ public class FeedbackDAO {
                 f.setFeedbackID(rs.getString("feedbackID"));
                 f.setTitle(rs.getString("title"));
                 f.setContent(rs.getString("content"));
-                f.setAuthorName(rs.getString("authorName"));
-                f.setUpvotes(rs.getInt("upvotes"));
+                f.setAuthorName(rs.getString("name"));
                 list.add(f);
             }
         } catch (Exception e) {
