@@ -24,8 +24,8 @@
                         <!-- ✅ Hero Section -->
                         <section class="hero-section d-flex justify-content-center align-items-center bg-primary text-white" id="section_1" style="min-height: 30vh;">
                             <div class="container text-center">
-                                <h1 class="display-5">Student Feedback List</h1>
-                                <p class="text-primary-emphasis">View, upvote, and contribute feedback to improve our campus life.</p>
+                                <h1 class="display-5">Forum Thread List</h1>
+                                <p class="text-light">View, upvote, and contribute feedback to improve our campus life.</p>
 
                                 <!-- Custom Submit Button -->
 
