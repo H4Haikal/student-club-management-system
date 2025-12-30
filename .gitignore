@@ -1,0 +1,20 @@
+# NetBeans
+nbproject/private/
+build/
+dist/
+nbactions.xml
+nb-configuration.xml
+
+# VS Code
+.vscode/
+
+# Java
+*.class
+target/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
